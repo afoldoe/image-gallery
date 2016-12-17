@@ -1,3 +1,10 @@
-<div layout="row">
-  <images></images>
-</div>
+
+<header layout="row">
+	  <ui-view ng-class="$ctrl.styles.header" name="header"></ui-view>
+</header>
+
+<main layout="row">
+  <ui-view  ng-class="$ctrl.styles.main" name="main">
+    <!--<images></images>-->
+  </ui-view>
+</main>

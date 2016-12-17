@@ -1,4 +1,5 @@
-const HtmlWebpackPlugin = require(`html-webpack-plugin`);
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: `./src/index.js`,
@@ -8,8 +9,9 @@ module.exports = {
   },
   devtool: `source-map`,
   plugins: [new HtmlWebpackPlugin({
-    template: `./src/index.html`
-  })],
+    template: `./src/app.html`
+  }),
+  new ExtractTextPlugin('/styles/bundle.css')],
   module: {
     preLoader: [{
       test: /\.js$/,

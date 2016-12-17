@@ -11,15 +11,10 @@ export default {
 };
   
   
-controller.inject = ['$mdDialog'];
+controller.$inject = ['$mdDialog'];
 function controller($mdDialog) {
   this.image = angular.copy(this.newImage);
 
-  // const resetImage = () => {
-  //   this.image = {};
-  // };
-
-  // resetImage();
   this.cancel = () => {
     $mdDialog.hide();
   };
@@ -29,3 +24,4 @@ function controller($mdDialog) {
     $mdDialog.hide();
   };
 };
+
