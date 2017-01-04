@@ -1,4 +1,4 @@
-import template from './app-header.html';
+import template from './album-add.html';
 
 export default {
   template,

@@ -2,22 +2,30 @@ configRoutes.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 export default function configRoutes($stateProvider, $urlRouterProvider) {
   $stateProvider
-    .state('home', {
+    .state('landing', {
       url: '/',
+      // default: '.add',
       views: {
         header: {
           component: 'homeHeader'
         },
         main: {
-          component: 'appHeader'
+          component: 'homeMain'
+        },
+        'album@landing': {
+          component: 'albumAdd'
         }
       }
     })
+    // .state('landing.add', {
+    //   url: '/album',
+    //   component: 'albumAdd'
+    // })
     .state('superheroes', {
       url: '/superheroes',
       views: {
         header: {
-          component: 'appHeader'
+          component: 'homeMain'
         },
         main: {
           component: 'heroes'
@@ -28,7 +36,7 @@ export default function configRoutes($stateProvider, $urlRouterProvider) {
       url: '/villains',
       views: {
         header: {
-          component: 'appHeader'
+          component: 'homeMain'
         },
         main: {
           component: 'villains'
