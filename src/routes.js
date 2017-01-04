@@ -17,10 +17,6 @@ export default function configRoutes($stateProvider, $urlRouterProvider) {
         }
       }
     })
-    // .state('landing.add', {
-    //   url: '/album',
-    //   component: 'albumAdd'
-    // })
     .state('superheroes', {
       url: '/superheroes',
       views: {
