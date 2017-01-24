@@ -4,7 +4,6 @@ export default function configRoutes($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('landing', {
       url: '/',
-      // default: '.add',
       views: {
         header: {
           component: 'homeHeader'
