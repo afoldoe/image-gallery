@@ -9,35 +9,36 @@ export default function configRoutes($stateProvider, $urlRouterProvider) {
           component: 'homeHeader'
         },
         main: {
-          component: 'homeMain'
+          component: 'albums'
         },
         'album@landing': {
           component: 'albumAdd'
         }
       }
     })
-    .state('superheroes', {
-      url: '/superheroes',
+    .state('albums', {
+      url: '/albums',
       views: {
         header: {
           component: 'homeMain'
         },
         main: {
-          component: 'heroes'
+          component: 'albums'
         }
       }
     })
-    .state('villains', {
-      url: '/villains',
-      views: {
-        header: {
-          component: 'homeMain'
-        },
-        main: {
-          component: 'villains'
-        }
-      }
-    });
+    // .state('villains', {
+    //   url: '/villains',
+    //   views: {
+    //     header: {
+    //       component: 'homeMain'
+    //     },
+    //     main: {
+    //       component: 'villains'
+    //     }
+    //   }
+    // })
+    ;
     
 
   $urlRouterProvider.otherwise('/');

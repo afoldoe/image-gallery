@@ -1,24 +1,24 @@
-import template from './heroes.html';
+import template from './album.html';
 
 export default {
   template,
   controller
 };
   
-controller.$inject = ['$mdDialog', 'heroesService'];
+controller.$inject = ['$mdDialog', 'albumsService'];
   
   
-function controller($mdDialog, heroesService) {
+function controller($mdDialog, albumsService) {
   
   this.view = 'full';
   this.images = [];
 
-  heroesService.getAll()
-    .then(heroes => this.images = heroes)
+  albumsService.get()
+    .then(images => this.images = images)
     .catch(err => console.log(err));
 
   this.add = newPic => {
-    heroesService.add(newPic)
+    albumsService.add(newPic)
       .then(addedPic => {
         this.images.push(addedPic);
       })
@@ -26,10 +26,10 @@ function controller($mdDialog, heroesService) {
   };
 
   this.remove = imageId => {
-    heroesService.remove(imageId)
+    albumsService.remove(imageId)
       .then(() => {
-        heroesService.getAll()
-          .then(heroes => this.images = heroes)
+        albumService.getAll()
+          .then(images => this.images = images)
           .catch(err => console.log(err));
       })
       .catch(err => console.log(err));
@@ -51,7 +51,7 @@ function controller($mdDialog, heroesService) {
       clickOutsideToClose: true,
       escapeToClose: true
     })
-    .then(newImage => {
+    .then(newimage => {
       if(!newImage) return;
       angular.copy(newImage, this.image);
     });
