@@ -5,14 +5,15 @@ export default {
   template,
   bindings: {
     add: '<',
-    newImage : '<image'
+    newImage : '<image',
+    albumId: '='
   },
   controller
 };
   
   
-controller.$inject = ['$mdDialog'];
-function controller($mdDialog) {
+controller.$inject = ['$mdDialog', 'imagesService'];
+function controller($mdDialog, imagesService) {
   this.image = angular.copy(this.newImage);
 
   this.cancel = () => {
@@ -20,6 +21,7 @@ function controller($mdDialog) {
   };
 
   this.save = () => {
+    this.image.album = this.albumId;
     this.add(this.image);
     $mdDialog.hide();
   };

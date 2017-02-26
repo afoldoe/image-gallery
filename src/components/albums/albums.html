@@ -2,7 +2,7 @@
   <div layout-md="row" layout-padding>
     <ul class="md-background">
       <li ng-repeat="album in $ctrl.albums">
-        {{album.title}}
+        <a ui-sref="album({id: album._id, album: album})">{{album.title}}</a>
         <br>
         <md-button ng-click="$ctrl.remove(album._id)">Delete Albums</md-button>
       </li>

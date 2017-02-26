@@ -12,11 +12,11 @@ export default {
 controller.$inject = ['$mdDialog', 'albumsService'];
 function controller($mdDialog, albumsService) {
 
+
   this.add = newAlbum => {
     albumsService.add(newAlbum)
       .then(addedAlbum => {
         this.albums.push(addedAlbum);
-        $state.go('landing');
       })
       .catch(err => console.log(err));
   };

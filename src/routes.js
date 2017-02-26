@@ -13,18 +13,28 @@ export default function configRoutes($stateProvider, $urlRouterProvider) {
         },
         'album@landing': {
           component: 'albumAdd'
-        }
-      }
+        },
+      },
+      resolve: {
+        albums: ['albumsService', albums => {
+          return albums.getAll();
+        }]
+      }    
     })
-    .state('albums', {
-      url: '/albums',
+    .state('album', {
+      url: '/albums/:id',
       views: {
         header: {
-          component: 'homeMain'
+          component: 'homeHeader'
         },
         main: {
-          component: 'albums'
+          component: 'album'
         }
+      },
+      resolve: {
+        album: [ 'albumsService', '$transition$', (albums, t) => {
+          return albums.get(t.params().id);
+        }]
       }
     })
     // .state('villains', {

@@ -5,9 +5,13 @@
   <md-button class="md-primary" ng-click="$ctrl.newPic($event)">Add Image</md-button>
 </div>
 
+<div>
+  {{$ctrl.album.title}}
+</div>
 <div layout-md="row" layout-padding>
   <ul class="md-background" ng-if="$ctrl.view !== 'new'">
-    <li ng-repeat="image in $ctrl.images">
+    <li ng-repeat="image in $ctrl.album.images">
+      {{image.title}}
       <full-pic ng-if="$ctrl.view === 'full'" image="image"></full-pic>
       <text-pic ng-if="$ctrl.view === 'text'" image="image"></text-pic>
       <thumb-pic ng-if="$ctrl.view === 'thumb'" image="image"></thumb-pic>

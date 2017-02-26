@@ -2,35 +2,30 @@ import template from './album.html';
 
 export default {
   template,
+  bindings: {
+    id: '=',
+    album:'='
+  },
   controller
 };
   
-controller.$inject = ['$mdDialog', 'albumsService'];
+controller.$inject = ['$mdDialog', 'albumsService', '$state', 'imagesService'];
   
   
-function controller($mdDialog, albumsService) {
-  
-  this.view = 'full';
-  this.images = [];
-
-  albumsService.get()
-    .then(images => this.images = images)
-    .catch(err => console.log(err));
+function controller($mdDialog, albumsService, $state, imagesService) {
 
   this.add = newPic => {
-    albumsService.add(newPic)
+    imagesService.add(newPic)
       .then(addedPic => {
-        this.images.push(addedPic);
+        this.album.images.push(addedPic);
       })
       .catch(err => console.log(err));
   };
 
   this.remove = imageId => {
-    albumsService.remove(imageId)
+    imagesService.remove(imageId)
       .then(() => {
-        albumService.getAll()
-          .then(images => this.images = images)
-          .catch(err => console.log(err));
+        $state.reload();
       })
       .catch(err => console.log(err));
   };
@@ -42,7 +37,7 @@ function controller($mdDialog, albumsService) {
       targetEvent: $event,
       controllerAs: '$ctrl',
       bindToController: true,
-      template: '<add-image-dialog add="$ctrl.add" image="$ctrl.image"></add-image-dialog>',
+      template: '<add-image-dialog add="$ctrl.add" image="$ctrl.image" albumId="$ctrl.album._id"></add-image-dialog>',
       controller() {},
       locals: {
         image: this.image,
