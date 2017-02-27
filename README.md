@@ -6,7 +6,10 @@ Arielle Foldoe
 
 #INSTALLATION
 **MongoDB required locally**
+
+You will need to also clone or download the server located here: [https://github.com/afoldoe/image-gallery-server]
+
 run `npm install` 
 
 #USAGE
-In the command line, enter `cd server` and then `npm start` to launch app
+In the command line, enter `npm start`. Site will be located at localhost:8080
