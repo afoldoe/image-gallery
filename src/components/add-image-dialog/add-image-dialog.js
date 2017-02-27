@@ -22,6 +22,7 @@ function controller($mdDialog, imagesService) {
 
   this.save = () => {
     this.image.album = this.albumId;
+    console.log(this.image);
     this.add(this.image);
     $mdDialog.hide();
   };

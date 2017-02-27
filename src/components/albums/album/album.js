@@ -41,12 +41,13 @@ function controller($mdDialog, albumsService, $state, imagesService) {
       controller() {},
       locals: {
         image: this.image,
-        add: this.add
+        add: this.add,
+        albumId: this.album_id
       },
       clickOutsideToClose: true,
       escapeToClose: true
     })
-    .then(newimage => {
+    .then(newImage => {
       if(!newImage) return;
       angular.copy(newImage, this.image);
     });
