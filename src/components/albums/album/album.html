@@ -2,18 +2,21 @@
   <md-button class="md-primary" ng-click="$ctrl.view = 'text'">Show Text</md-button>
   <md-button class="md-primary" ng-click="$ctrl.view = 'thumb'">Show Thumbnail</md-button>
   <md-button class="md-primary" ng-click="$ctrl.view = 'full'">Show Full</md-button>
-  <md-button class="md-primary" ng-click="$ctrl.view = 'new'">Add Image</md-button>
+  <md-button class="md-primary" ng-click="$ctrl.newPic($event)">Add Image</md-button>
 </div>
 
+<div>
+  {{$ctrl.album.title}}
+</div>
 <div layout-md="row" layout-padding>
   <ul class="md-background" ng-if="$ctrl.view !== 'new'">
-    <li ng-repeat="image in $ctrl.images">
+    <li ng-repeat="image in $ctrl.album.images">
+      {{image.title}}
       <full-pic ng-if="$ctrl.view === 'full'" image="image"></full-pic>
       <text-pic ng-if="$ctrl.view === 'text'" image="image"></text-pic>
       <thumb-pic ng-if="$ctrl.view === 'thumb'" image="image"></thumb-pic>
+      <md-button ng-click="$ctrl.remove(image._id)">Delete Image</md-button>
     </li>
   </ul>
 </div>
 
-
-<new-pic ng-if="$ctrl.view === 'new'" form="form" add="$ctrl.add"></new-pic>
